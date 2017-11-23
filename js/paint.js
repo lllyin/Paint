@@ -1,3 +1,8 @@
+/*
+* authot:liaolunling
+* data: 2017/11/23
+* */
+
 var config = {
     isDraw: false,
     canvasWidth: 550,
