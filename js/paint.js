@@ -5,13 +5,15 @@
 
 var config = {
     isDraw: false,
-    canvasWidth: 550,
-    canvasHeight: 500,
+    canvasWidth: window.innerWidth - 50,
+    canvasHeight: window.innerHeight - 120,
     brushSize: 12,
     brushColor: "red",
     brushCap: "round",
     brushJoin: "round",
 }
+
+console.log('config:', config)
 
 //函数库
 lyin = {
@@ -83,7 +85,6 @@ window.onload = function () {
     var ndCanvas = document.getElementById("canvas");
     // var context = canvas.getContext("2d");
 
-
     //init
     lyin.init(ndCanvas)
     lyin.draw()
@@ -103,13 +104,18 @@ window.onload = function () {
         })(i)
     }
 
-    var ndBrushSize = $(".brush-size .size");
+    var ndBrushSizeBtn = $(".brush-size .size-btn");
     var ndBrushSizeItem = $(".brush-size .brush-size-item");
+
+    ndBrushSizeBtn.click(function() {
+        $('.brush-size').toggleClass('shrink')
+    })
+
     ndBrushSizeItem.click(function () {
         var className = $(this).attr("class");
         var size = className.match(/\d+/g)>>>0;
         lyin.changeBrushSizde(size)
-        ndBrushSize.text(size)
+        ndBrushSizeBtn.text(`${size}px`)
     })
 
 }
